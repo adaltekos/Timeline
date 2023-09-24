@@ -1,0 +1,45 @@
+﻿@page
+@model TimelineSITE.Areas.Albums.Pages.CreateAlbumModel
+
+@{
+    ViewData["Title"] = "Create Album";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-floating">
+                <input asp-for="Album.Name" class="form-control" aria-required="true">
+                <label asp-for="Album.Name" class="form-label"></label>
+                <span asp-validation-for="Album.Name" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Album.DateStart" class="form-control" aria-required="false">
+                <label asp-for="Album.DateStart" class="form-label"></label>
+                <span asp-validation-for="Album.DateStart" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Album.DateEnd" class="form-control" aria-required="false">
+                <label asp-for="Album.DateEnd" class="form-label"></label>
+                <span asp-validation-for="Album.DateEnd" class="text-danger"></span>
+            </div>
+            <div class="row pt-2">
+                <div class="col pe-1">
+                    <button type="submit" class="btn btn-danger w-100">Create Album</button>
+                </div>
+                <div class="col ps-1">
+                    <a class="btn btn-primary w-100" asp-page="Index">Cancel</a>
+                </div>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

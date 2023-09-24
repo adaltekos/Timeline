@@ -1,0 +1,31 @@
+﻿@page
+@model TimelineSITE.Areas.Manage.Pages.Roles.IndexModel
+@{
+    ViewData["Title"] = "Manage Roles";
+}
+<div class="row justify-content-between align-items-baseline">
+    <h1 class="col-auto mr-auto">@ViewData["Title"]</h1>
+    <div class="col-auto content"><a class="btn btn-primary" asp-area="Manage" asp-page="/Roles/CreateRole">Create Role</a></div>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Manage Roles</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model.RolesList)
+        {
+            <tr>
+                <td>@role.RoleId</td>
+                <td>@role.RoleName</td>
+                <td>
+                    <a class="btn btn-primary" asp-area="Manage" asp-page="/Roles/EditRole" asp-route-roleId="@role.RoleId">Edit</a>
+                    <a class="btn btn-danger" asp-area="Manage" asp-page="/Roles/DeleteRole" asp-route-roleId="@role.RoleId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

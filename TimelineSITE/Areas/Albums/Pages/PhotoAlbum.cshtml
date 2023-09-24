@@ -1,0 +1,103 @@
+﻿@page "/Albums/{AlbumId}"
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<TimelineSITE.Models.ApplicationUser> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+    var accessLevel = Model.Album.UsersAccess.FirstOrDefault(u => u.UserId == user.Id).AccessLevel;
+}
+@model TimelineSITE.Areas.Albums.Pages.PhotoAlbumModel
+@{
+    ViewData["Title"] = Model.Album.Name;
+}
+<div class="row justify-content-between align-items-center">
+    <div class="col mr-auto">
+        <row><h2 class="mb-0 text-truncate">@ViewData["Title"]</h2></row>
+        <row>
+            <small class="text-muted mb-0">
+                @if (Model.Album.DateStart != null)
+                {
+                    @Model.Album.DateStart.Value.ToString("dd.MM.yyyy")
+                    ;
+                }
+                @if (Model.Album.DateStart != null && Model.Album.DateEnd != null)
+                {
+                    @Html.Raw(" - ")
+                }
+                @if (Model.Album.DateEnd != null)
+                {
+                    @Model.Album.DateEnd.Value.ToString("dd.MM.yyyy")
+                    ;
+                }
+            </small>
+        </row>
+    </div>
+    <div class="col-auto content">
+        <div class="d-flex flex-row align-items-center">
+            @if (accessLevel == TimelineSITE.Models.AccessLevels.Owner || accessLevel == TimelineSITE.Models.AccessLevels.Guest)
+            {
+                <div class="select-all m-1">
+                    <input type="checkbox" id="selectAll"> Select All
+                </div>
+                <button class="m-1 btn btn-primary" id="deleteAll">
+                    Delete Selected
+                </button>
+                <div class="m-1 badge bg-secondary" style="display: none;" id="uploadCounter"><span id="uploadedCount">0</span> / <span id="totalCount">0</span></div>
+                <label for="fileInput" class="m-1 btn btn-primary">
+                    <form method="POST" enctype="multipart/form-data" id="uploadForm">
+                        <input type="hidden" name="AlbumId" value="@Model.Album.Id" id="albumIdInput" />
+                        <input type="file" name="UploadedFile" class="form-control-file" id="fileInput" style="display: none;" multiple />
+                        Upload
+                    </form>
+                </label>
+            }
+            @if (accessLevel == TimelineSITE.Models.AccessLevels.Owner)
+            {
+                <button class="1-2 btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Manage Album
+                </button>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <a class="dropdown-item" asp-area="Albums" asp-page="/ShareAlbum" asp-route-AlbumId="@Model.Album.Id">Share Album</a>
+                    <a class="dropdown-item" asp-area="Albums" asp-page="/EditAlbum" asp-route-AlbumId="@Model.Album.Id">Edit Album</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" asp-area="Albums" asp-page="/DeleteAlbum" asp-route-AlbumId="@Model.Album.Id">Delete Album</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div id="uploadStatus"></div>
+<hr />
+<div class="photo-gallery">
+    @foreach (var image in Model.Images)
+    {
+        <div class="photo-box">
+            @if (accessLevel == TimelineSITE.Models.AccessLevels.Owner || accessLevel == TimelineSITE.Models.AccessLevels.Guest)
+            {
+                <input type="checkbox" class="photo-checkbox" data-id="@image.Image.Id">
+            }
+            @if (@image.Image.ContentType.StartsWith("video/"))
+            {
+                <span class="photo-play bi bi-play-circle"></span>
+            }
+            <img src="data:image/jpeg;base64,@Convert.ToBase64String(image.Image.ThumbnailImage)" type="@image.Image.ContentType" />
+            <a href="@image.Url"></a>
+        </div>
+    }
+</div>
+
+<div class="expanded-view" tabindex=" 0">
+    <button class="btn btn-dark close-button">&times;</button>
+    <img src="" alt="Expanded Image">
+    <video controls autoplay>
+        <source src="" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <button class="btn btn-dark btn-lg prev-button">&lt;</button>
+    <button class="btn btn-dark btn-lg next-button">&gt;</button>
+</div>
+
+@section Scripts {
+    <script src="~/js/ExpandImageViewer.js"></script>
+    <script src="~/js/AutomatedUploadingFiles.js"></script>
+    <script src="~/js/DeleteSelectedFiles.js"></script>
+}

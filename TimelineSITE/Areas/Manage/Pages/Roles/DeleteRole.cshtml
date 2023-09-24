@@ -1,0 +1,32 @@
+﻿@page
+@model TimelineSITE.Areas.Manage.Pages.Roles.DeleteRoleModel
+@{
+    ViewData["Title"] = "Delete Role";
+}
+<h2>Are you sure you want delete this role</h2>
+<partial name="_StatusMessage" for="StatusMessage" />
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <input type="hidden" asp-for="RoleName" />
+            <div class="form-floating">
+                <input asp-for="RoleId" class="form-control" disabled />
+                <label asp-for="RoleId" class="form-label"></label>
+            </div>
+            <div class="form-floating">
+                <input asp-for="RoleName" class="form-control" disabled />
+                <label asp-for="RoleName" class="form-label"></label>
+            </div>
+            <div class="row pt-2">
+                <div class="col pe-1">
+                    <button type="submit" class="w-100 btn btn-danger">Yes! Delete</button>
+                </div>
+                <div class="col ps-1">
+                    <a class="btn btn-primary w-100" asp-area="Manage" asp-page="/Roles/Index">Cancel</a>
+                </div>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        </form>
+    </div>
+</div>

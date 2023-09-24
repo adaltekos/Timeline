@@ -1,0 +1,41 @@
+﻿@page
+@model TimelineSITE.Areas.Manage.Pages.Accounts.IndexModel
+@{
+    ViewData["Title"] = "Manage Users";
+}
+<div class="row justify-content-between align-items-baseline">
+    <h1 class="col-auto mr-auto">@ViewData["Title"]</h1>
+    <div class="col-auto content"><a class="btn btn-primary" asp-area="Manage" asp-page="/Accounts/CreateUser">Create User</a></div>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Email<br>Confimed</th>
+            <th>Lockout<br>Enabled</th>
+            <th>Login<br>Fails</th>
+            <th>Lockout<br>End</th>
+            <th>Roles</th>
+            <th>Manage Users</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.IdentityUserList)
+        {
+            <tr>
+                <td>@user.UserId</td>
+                <td>@user.Email</td>
+                <td>@user.EmailConfirmed</td>
+                <td>@user.LockoutEnabled</td>
+                <td>@user.AccessFaildCount</td>
+                <td>@user.LockoutEnd</td>
+                <td>@string.Join(", ", user.Roles.ToList())</td>
+                <td>
+                    <a class="btn btn-primary" asp-area="Manage" asp-page="/Accounts/ManageUserRoles" asp-route-userId="@user.UserId">Manage Roles</a>
+                    <a class="btn btn-primary" asp-area="Manage" asp-page="/Accounts/ResetPassword" asp-route-userId="@user.UserId">Reset Password</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

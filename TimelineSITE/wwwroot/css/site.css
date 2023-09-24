@@ -1,0 +1,177 @@
+﻿html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+/* CSS for the photo gallery container */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 0fr));
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CSS for each photo box */
+.photo-box {
+    width: 210px;
+    height: 210px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+    /* CSS for the images themselves */
+    .photo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+/* Initially hide the checkbox */
+.photo-checkbox {
+    position: absolute;
+    top: 10px; /* Adjust this value as needed */
+    right: 10px; /* Adjust this value as needed */
+    z-index: 2; /* Place above the image */
+    opacity: 1; /* Hide the actual checkbox */
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.photo-play {
+    position: absolute;
+    top: 5px; /* Adjust this value as needed */
+    left: 10px; /* Adjust this value as needed */
+    z-index: 2; /* Place above the image */
+    opacity: 1; /* Hide the actual checkbox */
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+}
+
+.expanded-view {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(30, 30, 30, 1);
+    text-align: center;
+    z-index: 1000;
+}
+
+    .expanded-view img {
+        max-height: 100%;
+        max-width: 100%;
+        margin: auto;
+        display: block;
+    }
+
+    .expanded-view video {
+        max-height: 100%;
+        max-width: 100%;
+        margin: auto;
+        display: block;
+    }
+
+.close-button {
+    position: absolute;
+    top: 5%;
+    left: 95%;
+    transform: translate(-50%, -50%);
+
+}
+
+.prev-button {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translate(-50%, -50%);
+    padding: 16px 25px;
+}
+
+.next-button {
+    position: absolute;
+    top: 50%;
+    left: 95%;
+    transform: translate(-50%, -50%);
+    padding: 16px 25px;
+}
+
+.album-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 0fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.album-box {
+    width: 400px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.album-box a {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.album-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+}
+
+.folder-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 20px;
+}
+
+.journey-date {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 20px;
+    padding-top: 15px;
+}
+
+.album-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.album-text h5 {
+    text-align: start;
+    white-space: nowrap; /* Prevent line breaks */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Display ellipsis (...) for long text */
+}

@@ -1,0 +1,38 @@
+﻿@page
+@model TimelineSITE.Areas.Manage.Pages.Accounts.ManageUserRolesModel
+@{
+    ViewData["Title"] = "Manage User Roles";
+}
+
+<h2>Manage roles on user <i>@Model.UserEmail</i></h2>
+<partial name="_StatusMessage" for="StatusMessage" />
+<hr />
+<div class="row">
+    <div class="col-md-4 ">
+        <form method="post">
+            <input type="hidden" asp-for="UserEmail" />
+            <div class="form-floating border rounded">
+                @for (var i = 0; i < Model.Input.Count; i++)
+                {
+                    <div class="form-check m-2">
+                        <input type="hidden" asp-for="@Model.Input[i].RoleId" />
+                        <input type="hidden" asp-for="@Model.Input[i].RoleName" />
+                        <input asp-for="@Model.Input[i].Selected" class="form-check-input" />
+                        <label class="form-check-label" asp-for="@Model.Input[i].Selected">
+                            @Model.Input[i].RoleName
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="row pt-2">
+                <div class="col pe-1">
+                    <button type="submit" class="btn btn-danger w-100">Update</button>
+                </div>
+                <div class="col ps-1">
+                    <a class="btn btn-primary w-100" asp-area="Manage" asp-page="/Accounts/Index">Cancel</a>
+                </div>
+            </div>
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </form>
+    </div>
+</div>

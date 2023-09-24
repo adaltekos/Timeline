@@ -1,0 +1,67 @@
+﻿@page "/Albums/{AlbumId}/Share"
+@model TimelineSITE.Areas.Albums.Pages.ShareAlbumModel
+@{
+    ViewData["Title"] = "Share Album";
+}
+<h2>@ViewData["Title"] &#x2022; @Model.Album.Name</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-page-handler="Share" method="post">
+            <input type="hidden" asp-for="@Model.Album.Id" />
+            <input type="hidden" asp-for="@Model.Album.Name" />
+            <div class="form-floating">
+                <input type="text" name="email" class="form-control" />
+                <label class="form-label">Email</label>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Access Level</label>
+                <select type="text" name="accesslevel" class="form-control">
+                    @foreach (var accessLevel in Enum.GetValues(typeof(TimelineSITE.Models.AccessLevels)))
+                    {
+                        <option value="@((int)accessLevel)">@accessLevel</option>
+                    }
+                </select>
+            </div>
+            <div class="row pt-2">
+                <div class="col pe-1">
+                    <button type="submit" class="w-100 btn btn-danger">Add</button>
+                </div>
+                <div class="col ps-1">
+                    <a class="btn btn-primary w-100" asp-area="Albums" asp-page="/PhotoAlbum" asp-route-AlbumId="@Model.Album.Id">Cancel</a>
+                </div>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Shared Date</th>
+                    <th>Access Level</th>
+                    <th>Manage</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var access in Model.SharedUsersList)
+                {
+                    <tr>
+                        <td>@access.User.Email</td>
+                        <td>@access.ShareDate</td>
+                        <td>@access.AccessLevel</td>
+                        <td>
+                            <form asp-page-handler="DeleteAccess" method="post">
+                                <input type="hidden" asp-for="@Model.Album.Id" />
+                                <input type="hidden" asp-for="@Model.Album.Name" />
+                                <input type="hidden" name="albumaccessid" value="@access.Id" />
+                                <button class="btn btn-danger" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

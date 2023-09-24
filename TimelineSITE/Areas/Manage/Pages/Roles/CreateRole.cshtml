@@ -1,0 +1,28 @@
+﻿@page
+@model TimelineSITE.Areas.Manage.Pages.Roles.CreateRoleModel
+@{
+    ViewData["Title"] = "Create new Role";
+}
+<h2>@ViewData["Title"]</h2>
+<partial name="_StatusMessage" for="StatusMessage" />
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-floating">
+                <input asp-for="RoleName" class="form-control" aria-required="true">
+                <label asp-for="RoleName" class="form-label">Role Name</label>
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            <div class="row pt-2">
+                <div class="col pe-1">
+                    <button type="submit" class="btn btn-danger w-100">Create Role</button>
+                </div>
+                <div class="col ps-1">
+                    <a class="btn btn-primary w-100" asp-area="Manage" asp-page="/Roles/Index">Cancel</a>
+                </div>
+            </div>
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </form>
+    </div>
+</div>
