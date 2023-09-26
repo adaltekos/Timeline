@@ -9,10 +9,10 @@ Jak stworzyć album ze zdjęciami.
 ## OPIS
 Timeline to aplikacja gdzie każdy użytkownik możne tworzyć albumy które później może udostępniać innym użytkownikom.\
 Obecnie Owner albumu może udostępnić innemu użytkownikowi album i nadać mu uprawnienia na poziomie Guesta lub OnlyView.\
-Owenr i Guest mogą dodawać i usuwać zdjęcia które są przetrzymywane na Azure Blob Storage a miniaturki w bazie danych SQL\
+Owenr i Guest mogą dodawać i usuwać zdjęcia które są przetrzymywane na Azure Blob Storage a miniaturki w bazie danych SQL
 
 ## TODO
 Obsługa zdjęć .heic i filmów .hevc (Apple)\
 Sortowanie w albumie po dacie stworzenia itp.\
 Dodanie możliwości usunięcia się z udostępnionego przez kogoś albumu\
-(może) Możliwość usunięcia tylko swoich zdjęć z albumu\
+(może) Możliwość usunięcia tylko swoich zdjęć z albumu
