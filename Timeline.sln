@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimelineAPI", "TimelineAPI\TimelineAPI.csproj", "{56C4148E-C243-4F31-A88F-F4572772EAEE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimelineSITE", "TimelineSITE\TimelineSITE.csproj", "{219E37C1-18BE-463B-A76F-784397EE3DF6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56C4148E-C243-4F31-A88F-F4572772EAEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56C4148E-C243-4F31-A88F-F4572772EAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56C4148E-C243-4F31-A88F-F4572772EAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56C4148E-C243-4F31-A88F-F4572772EAEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{219E37C1-18BE-463B-A76F-784397EE3DF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{219E37C1-18BE-463B-A76F-784397EE3DF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{219E37C1-18BE-463B-A76F-784397EE3DF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{219E37C1-18BE-463B-A76F-784397EE3DF6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0EDCA8AD-CE6F-4554-8F90-D2436E6871A7}
+	EndGlobalSection
+EndGlobal
