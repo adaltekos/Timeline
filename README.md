@@ -16,3 +16,7 @@ Obsługa zdjęć .heic i filmów .hevc (Apple)\
 Sortowanie w albumie po dacie stworzenia itp.\
 Dodanie możliwości usunięcia się z udostępnionego przez kogoś albumu\
 (może) Możliwość usunięcia tylko swoich zdjęć z albumu
+
+## JAK WYGLĄDA APLIKACJA
+![s1](https://github.com/adaltekos/Timeline/assets/69512624/e485b6df-cf2d-4f4c-859a-017be9d0ec39)
+![s2](https://github.com/adaltekos/Timeline/assets/69512624/a6c58145-ad91-4dcb-be29-f27e74ccafb9)
